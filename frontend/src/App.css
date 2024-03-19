@@ -1,0 +1,29 @@
+.title{
+    margin: 0; /* Margen de 0 */
+    font-size: 3em; /* Tamaño de fuente de 2em */
+    font-weight: 900; /* Grosor de la fuente de 400 */
+    color: #485877; 
+}
+
+.todo{
+    display: flex; /* Utiliza flexbox para alinear los elementos horizontalmente */
+    flex-direction: column;
+}
+
+.graficas {
+    display: flex; /* Utiliza flexbox para alinear los elementos horizontalmente */
+    align-items: center; /* Alinea los elementos verticalmente en el centro */
+  }
+
+.proctree{
+    display: flex; /* Utiliza flexbox para alinear los elementos horizontalmente */
+    flex-direction: column;
+    align-items: center; /* Alinea los elementos verticalmente en el centro */
+  
+}
+.h4 {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5em; /* Tamaño de fuente de 1.5em */
+    margin: 0; /* Margen de 0 */
+} 

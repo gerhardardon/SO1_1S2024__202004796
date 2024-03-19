@@ -1,0 +1,1 @@
+cmd_/home/gerhard/Escritorio/SO1_1S2024_202004796/Proyecto1/modulos/ram.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/gerhard/Escritorio/SO1_1S2024_202004796/Proyecto1/modulos/ram.ko /home/gerhard/Escritorio/SO1_1S2024_202004796/Proyecto1/modulos/ram.o /home/gerhard/Escritorio/SO1_1S2024_202004796/Proyecto1/modulos/ram.mod.o;  true

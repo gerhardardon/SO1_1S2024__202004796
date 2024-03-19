@@ -1,0 +1,1 @@
+cmd_/home/gerhard/Escritorio/SO1_1S2024_202004796/Proyecto1/modulo_proc/procesos.mod := { echo  /home/gerhard/Escritorio/SO1_1S2024_202004796/Proyecto1/modulo_proc/procesos.o;  echo; } > /home/gerhard/Escritorio/SO1_1S2024_202004796/Proyecto1/modulo_proc/procesos.mod

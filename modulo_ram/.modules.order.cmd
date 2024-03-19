@@ -1,0 +1,1 @@
+cmd_/home/gerhard/Escritorio/SO1_1S2024_202004796/Proyecto1/modulos/modules.order := {   echo /home/gerhard/Escritorio/SO1_1S2024_202004796/Proyecto1/modulos/ram.ko; :; } | awk '!x[$$0]++' - > /home/gerhard/Escritorio/SO1_1S2024_202004796/Proyecto1/modulos/modules.order
