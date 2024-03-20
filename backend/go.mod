@@ -1,10 +1,10 @@
 module proy1
 
-go 1.21.6
+go 1.21
 
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
-	github.com/gofiber/fiber/v2 v2.52.2 // indirect
+	github.com/gofiber/fiber/v2 v2.52.2 
 	github.com/google/uuid v1.5.0 // indirect
 	github.com/klauspost/compress v1.17.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect

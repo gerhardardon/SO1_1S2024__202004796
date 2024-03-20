@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  apigo:
+    image: gerhardardon/apigo:latest
+    pid: host
+    restart: always
+    volumes:
+    - type: bind
+      source: /proc
+      target: /proc
+    ports:
+      - "3000:3000"
+
+
+  frontend:
+    image: gerhardardon/frontreact:latest
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - apigo

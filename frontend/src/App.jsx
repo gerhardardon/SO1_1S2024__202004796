@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/ram");
+        const response = await fetch("apigo/api/ram");
         if (!response.ok) {
           throw new Error("Error");
         }
@@ -46,7 +46,7 @@ function App() {
 
   const handleClick = () => {
     console.log("Contenido del FloatingLabel:", pid);
-    fetch("http://localhost:3000/api/proc/" + pid)
+    fetch("apigo/api/proc/" + pid)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error al obtener los datos");
