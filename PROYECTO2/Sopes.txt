@@ -1,0 +1,15 @@
+grpc server                 []  
+grpc client(:3000)          []
+ingress                     []  jonathan y estuardo
+wasm (tal vez)
+kafka server                []  local y compose 
+
+deployment                  []  local y compose 
+redis                       []  volumenes de compose
+mongo                       []  volumenes de compose 
+
+deplymente de kube jonathan 
+
+----------------------------------------
+crear compose de kafka y zookeper
+crear dockerfiles de grpc client y server

@@ -1,0 +1,67 @@
+version: "3.8"
+
+services:
+  grpc-server:
+    build:
+      context: ./grpcServer
+    ports:
+      - "3001:3001"
+
+  grpc-client:
+    build:
+      context: ./grpcClient
+    ports:
+      - "3000:3000"
+    depends_on:
+      - grpc-server
+
+  kafka:
+    image: "bitnami/kafka:latest"
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+
+  zookeeper:
+    image: "bitnami/zookeeper:latest"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    ports:
+      - "2181:2181"
+
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    depends_on:
+      - kafka
+    volumes:
+      - redis-data:/data
+
+  mongo:
+    image: "mongo:latest"
+    ports:
+      - "27017:27017"
+    depends_on:
+      - kafka
+    volumes:
+      - mongo-data:/data/db
+
+  go-client:
+    build:
+      context: ./goClient
+    ports:
+      - "5000:5000"
+    depends_on:
+      - kafka
+      - redis
+      - mongo
+
+volumes:
+  redis-data:
+  mongo-data:

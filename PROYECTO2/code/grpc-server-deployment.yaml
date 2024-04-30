@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.version: 1.33.0 (3ce457399)
+  labels:
+    io.kompose.service: grpc-server
+  name: grpc-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: grpc-server
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yaml
+        kompose.version: 1.33.0 (3ce457399)
+      labels:
+        io.kompose.network/code-default: "true"
+        io.kompose.service: grpc-server
+    spec:
+      containers:
+        - image: grpc-server
+          name: grpc-server
+          ports:
+            - containerPort: 3001
+              hostPort: 3001
+              protocol: TCP
+      restartPolicy: Always

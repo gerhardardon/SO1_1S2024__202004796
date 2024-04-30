@@ -35,17 +35,20 @@ func insertData(c *fiber.Ctx) error {
 		Rank:  data["rank"],
 	}
 
-	conn, err := grpc.Dial("localhost:3001", grpc.WithTransportCredentials(insecure.NewCredentials()),
+	conn, err := grpc.Dial("grpc-server:3001", grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithBlock())
 	if err != nil {
 		log.Fatalln(err)
+		fmt.Println("-err")
 	}
+	fmt.Println("Conectado al server")
 
 	cl := pb.NewGetInfoClient(conn)
 	defer func(conn *grpc.ClientConn) {
 		err := conn.Close()
 		if err != nil {
 			log.Fatalln(err)
+			fmt.Println("-err")
 		}
 	}(conn)
 
@@ -57,6 +60,7 @@ func insertData(c *fiber.Ctx) error {
 	})
 	if err != nil {
 		log.Fatalln(err)
+		fmt.Println("-err")
 	}
 
 	fmt.Println("Respuesta del server " + ret.GetInfo())
@@ -71,10 +75,13 @@ func insertData(c *fiber.Ctx) error {
 func main() {
 	app := fiber.New()
 	app.Post("/insert", insertData)
-
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("Hello, World!")
+	})
 	err := app.Listen(":3000")
 	if err != nil {
 		log.Fatalln(err)
+		fmt.Println("Error")
 		return
 	}
 }
