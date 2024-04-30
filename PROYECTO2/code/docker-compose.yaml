@@ -62,6 +62,15 @@ services:
       - redis
       - mongo
 
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3002:3000"
+    depends_on:
+      - redis  # Asegúrate de que Grafana se inicia después de Redis
+    environment:
+      GF_INSTALL_PLUGINS: "redis-datasource"  # Instala automáticamente el plugin de Redis
+
 volumes:
   redis-data:
   mongo-data:
