@@ -5,12 +5,13 @@ metadata:
     kompose.cmd: kompose convert -f docker-compose.yaml
     kompose.version: 1.33.0 (3ce457399)
   labels:
-    io.kompose.service: kafka
-  name: kafka
+    io.kompose.service: grpc-client
+  name: grpc-client
 spec:
+  type: ClusterIP
   ports:
-    - name: "9092"
-      port: 9092
-      targetPort: 9092
+    - name: "http"
+      port: 8080
+      targetPort: 3000
   selector:
-    io.kompose.service: kafka
+    io.kompose.service: grpc-client

@@ -14,3 +14,5 @@ spec:
       targetPort: 3001
   selector:
     io.kompose.service: grpc-server
+status:
+  loadBalancer: {}

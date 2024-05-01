@@ -5,15 +5,13 @@ metadata:
     kompose.cmd: kompose convert -f docker-compose.yaml
     kompose.version: 1.33.0 (3ce457399)
   labels:
-    io.kompose.service: redis
-  name: redis
+    io.kompose.service: grpc-server
+  name: grpc-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: redis
-  strategy:
-    type: Recreate
+      io.kompose.service: grpc-server
   template:
     metadata:
       annotations:
@@ -21,20 +19,14 @@ spec:
         kompose.version: 1.33.0 (3ce457399)
       labels:
         io.kompose.network/code-default: "true"
-        io.kompose.service: redis
+        io.kompose.service: grpc-server
     spec:
       containers:
-        - image: redis:latest
-          name: redis
+        - image: grpc-server
+          name: grpc-server
           ports:
-            - containerPort: 6379
-              hostPort: 6379
+            - containerPort: 3001
+              hostPort: 3001
               protocol: TCP
-          volumeMounts:
-            - mountPath: /data
-              name: redis-data
       restartPolicy: Always
-      volumes:
-        - name: redis-data
-          persistentVolumeClaim:
-            claimName: redis-data
+status: {}

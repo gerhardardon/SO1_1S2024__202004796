@@ -38,3 +38,4 @@ spec:
               hostPort: 9092
               protocol: TCP
       restartPolicy: Always
+status: {}

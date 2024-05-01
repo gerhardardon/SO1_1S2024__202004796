@@ -8,6 +8,7 @@ metadata:
     io.kompose.service: mongo
   name: mongo
 spec:
+  type: loadBalancer
   ports:
     - name: "27017"
       port: 27017
