@@ -22,7 +22,7 @@ spec:
         io.kompose.service: grpc-client
     spec:
       containers:
-        - image: grpc-client
+        - image: gerhardardon/grpc-client:latest
           name: grpc-client
           ports:
             - containerPort: 3000

@@ -22,7 +22,7 @@ spec:
         io.kompose.service: go-client
     spec:
       containers:
-        - image: go-client
+        - image: gerhardardon/go-client:latest
           name: go-client
           ports:
             - containerPort: 5000
