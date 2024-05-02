@@ -32,3 +32,22 @@ spec:
               protocol: TCP
       restartPolicy: Always
 status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.version: 1.33.0 (3ce457399)
+  labels:
+    io.kompose.service: mongo
+  name: mongo
+spec:
+  type: LoadBalancer
+  ports:
+    - name: "27017"
+      port: 27017
+      targetPort: 27017
+  selector:
+    io.kompose.service: mongo

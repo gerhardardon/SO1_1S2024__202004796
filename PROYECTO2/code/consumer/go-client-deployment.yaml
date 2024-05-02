@@ -22,10 +22,30 @@ spec:
         io.kompose.service: go-client
     spec:
       containers:
-        - image: gerhardardon/go-client:latest
+        - image: gerhardardon/consumer:latest
           name: go-client
           ports:
             - containerPort: 5000
               hostPort: 5000
               protocol: TCP
       restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.version: 1.33.0 (3ce457399)
+  labels:
+    io.kompose.service: go-client
+  name: go-client
+spec:
+  ports:
+    - name: "5000"
+      port: 5000
+      targetPort: 5000
+  selector:
+    io.kompose.service: go-client
+status:
+  loadBalancer: {}

@@ -22,6 +22,9 @@ type Data struct {
 }
 
 func insertData(c *fiber.Ctx) error {
+	fmt.Println("iniciando")
+	log.Println("iniciando")
+
 	var data map[string]string
 	e := c.BodyParser(&data)
 	if e != nil {
@@ -42,6 +45,7 @@ func insertData(c *fiber.Ctx) error {
 		fmt.Println("-err")
 	}
 	fmt.Println("Conectado al server")
+	log.Println("Conectado al server")
 
 	cl := pb.NewGetInfoClient(conn)
 	defer func(conn *grpc.ClientConn) {
@@ -64,6 +68,8 @@ func insertData(c *fiber.Ctx) error {
 	}
 
 	fmt.Println("Respuesta del server " + ret.GetInfo())
+	fmt.Println("iniciando 2")
+	log.Println("iniciando 2")
 
 	return nil
 }
@@ -73,11 +79,20 @@ func insertData(c *fiber.Ctx) error {
 }*/
 
 func main() {
+	fmt.Println("Server running on port 3000  1")
+	log.Println("Server running on port 3000  1")
 	app := fiber.New()
 	app.Post("/insert", insertData)
 	app.Get("/", func(c *fiber.Ctx) error {
+		fmt.Println("Hello, World!")
+		log.Println("Hello, World!")
 		return c.SendString("Hello, World!")
+
 	})
+
+	fmt.Println("Server running on port 3000")
+	log.Println("Server running on port 3000")
+
 	err := app.Listen(":3000")
 	if err != nil {
 		log.Fatalln(err)
